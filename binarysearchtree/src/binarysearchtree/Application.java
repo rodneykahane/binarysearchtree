@@ -3,8 +3,17 @@ package binarysearchtree;
 public class Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
+		BST tree = new BST();
+		tree.insert(10,"TEN");
+		tree.insert(20,"twenty");
+		tree.insert(15,"fifteen");
 
-}
+	
+	System.out.println(tree.findMin().key);
+	System.out.println(tree.findMax().key);
+	
+	
+	}//end main
+
+}//end class
