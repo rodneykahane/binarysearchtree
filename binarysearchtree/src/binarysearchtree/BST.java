@@ -56,6 +56,48 @@ public class BST {
 			current = current.rightChild;
 		}
 		return last;
-	}
+	}//end findMax()
+	
+	
+	public void deleteNode(int key) {
+		Node current = root;
+		Node parent;
+		Node childR;
+		Node childL;
+		
+		while(true) {
+			parent = current;
+			if(key < current.key) {
+				current = current.leftChild;
+				if(current.key == key) {
+					childR=current.rightChild;
+					childL=current.leftChild;
+					parent.leftChild = null;
+					if(childR != null) {
+						insert(childR.key,childR.value);
+					}
+					if(childL != null) {
+						insert(childL.key,childL.value);
+					}
+					
+					return;
+				}
+			} else {
+				current = current.rightChild;
+				if(current.key == key) {
+					childR=current.rightChild;
+					childL=current.leftChild;
+					parent.rightChild = null;
+					if(childR != null) {
+						insert(childR.key,childR.value);
+					}
+					if(childL != null) {
+						insert(childL.key,childL.value);
+					}
+					return;
+				}
+			}
+		}//end while
+	}//end deleteNode()
 	
 }//end class
