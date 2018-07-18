@@ -88,9 +88,8 @@ public class BST {
 					} else if(current.leftChild == null){					
 						parent.leftChild = current.rightChild;
 					}*/
-					//version 3
-					
-					childR=current.rightChild;
+					//version 3 <-- does not consider additional child nodes :(					
+					/*childR=current.rightChild;
 					childL=current.leftChild;
 					if(childL.key > childR.key) {
 						parent.leftChild=childL;
@@ -98,7 +97,9 @@ public class BST {
 					} else {
 						parent.leftChild = childR;
 						childR.leftChild.leftChild = childL;
-					}
+					}*/
+					//version 4
+					
 
 					return;
 				}
@@ -124,9 +125,8 @@ public class BST {
 					} else if (current.rightChild == null){					
 						parent.rightChild = current.leftChild;
 					}*/
-					//version 3
-					
-					childR=current.rightChild;
+					//version 3 <-- does not consider additional child nodes :(					
+					/*childR=current.rightChild;
 					childL=current.leftChild;
 					if(childR.key > childL.key) {
 						parent.rightChild=childR;
@@ -134,7 +134,9 @@ public class BST {
 					} else {
 						parent.rightChild = childL;
 						childR.rightChild.rightChild = childL;
-					}
+					}*/
+					//version 4
+					
 					return;
 				}
 			}
