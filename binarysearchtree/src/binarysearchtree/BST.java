@@ -70,6 +70,7 @@ public class BST {
 			if(key < current.key) {
 				current = current.leftChild;
 				if(current.key == key) {
+					//version 1
 					/*childR=current.rightChild; 
 					childL=current.leftChild; 
 					parent.leftChild = current.leftChild;
@@ -79,9 +80,11 @@ public class BST {
 					if(childL != null) {
 						parent.rightChild = childR;
 					}*/
-					if(current.leftChild != null) {						
+					//version 2
+					if(current.leftChild != null && current.rightChild != null) {						
 						parent.leftChild = current.leftChild;
-					} else {					
+						parent.rightChild = current.rightChild;
+					} else if(current.leftChild == null){					
 						parent.leftChild = current.rightChild;
 					}
 
@@ -91,6 +94,7 @@ public class BST {
 			if(key > current.key){
 				current = current.rightChild;
 				if(current.key == key) {
+					//version 1
 					/*childR=current.rightChild;
 					childL=current.leftChild;
 					parent.rightChild = current.rightChild;
@@ -100,9 +104,11 @@ public class BST {
 					if(childL != null) {
 						insert(childL.key,childL.value);
 					}*/
-					if(current.rightChild != null) {						
+					//version 2
+					if(current.rightChild != null && current.leftChild != null) {						
 						parent.rightChild = current.rightChild;
-					} else {					
+						parent.leftChild = current.leftChild;
+					} else if (current.rightChild == null){					
 						parent.rightChild = current.leftChild;
 					}
 					return;

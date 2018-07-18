@@ -56,8 +56,8 @@ public class Application {
 		
 		tree.listNode(50);
 		System.out.println("");
-		//tree.listNode(63);
-		//.out.println("");
+		tree.listNode(35);
+		//System.out.println("");
 		//tree.listNode(67);
 
 	}//end main
