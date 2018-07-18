@@ -62,11 +62,12 @@ public class BST {
 	public void deleteNode(int key) {
 		Node current = root;
 		Node parent;
-		/*Node childR;
-		Node childL;*/
+		Node childR;
+		Node childL;
 
 		while(true) {
 			parent = current;
+			//traversing through the left branch
 			if(key < current.key) {
 				current = current.leftChild;
 				if(current.key == key) {
@@ -81,16 +82,28 @@ public class BST {
 						parent.rightChild = childR;
 					}*/
 					//version 2
-					if(current.leftChild != null && current.rightChild != null) {						
+					/*if(current.leftChild != null && current.rightChild != null) {						
 						parent.leftChild = current.leftChild;
 						parent.rightChild = current.rightChild;
 					} else if(current.leftChild == null){					
 						parent.leftChild = current.rightChild;
+					}*/
+					//version 3
+					
+					childR=current.rightChild;//35
+					childL=current.leftChild;//15
+					if(childL.key > childR.key) {
+						parent.leftChild=childL;
+						childR.leftChild.leftChild = childR;
+					} else {
+						parent.leftChild = childR;
+						childR.leftChild.leftChild = childL;
 					}
 
 					return;
 				}
 			} 
+			//traversing through the right branch
 			if(key > current.key){
 				current = current.rightChild;
 				if(current.key == key) {
@@ -105,11 +118,22 @@ public class BST {
 						insert(childL.key,childL.value);
 					}*/
 					//version 2
-					if(current.rightChild != null && current.leftChild != null) {						
+					/*if(current.rightChild != null && current.leftChild != null) {						
 						parent.rightChild = current.rightChild;
 						parent.leftChild = current.leftChild;
 					} else if (current.rightChild == null){					
 						parent.rightChild = current.leftChild;
+					}*/
+					//version 3
+					
+					childR=current.rightChild;//35
+					childL=current.leftChild;//15
+					if(childR.key > childL.key) {
+						parent.rightChild=childL;
+						childR.rightChild.rightChild = childL;
+					} else {
+						parent.rightChild = childL;
+						childR.rightChild.rightChild = childR;
 					}
 					return;
 				}

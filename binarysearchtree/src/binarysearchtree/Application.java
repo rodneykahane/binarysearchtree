@@ -52,13 +52,18 @@ public class Application {
 		System.out.println("");		
 		tree.listNode(25);
 		System.out.println("");
+		
+		System.out.println("deleting node");
 		tree.deleteNode(25);		
 		
+		System.out.println("");
 		tree.listNode(50);
 		System.out.println("");
 		tree.listNode(35);
-		//System.out.println("");
-		//tree.listNode(67);
+		System.out.println("");
+		tree.listNode(30);
+		System.out.println("");
+		tree.listNode(15);
 
 	}//end main
 
