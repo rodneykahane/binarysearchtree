@@ -30,6 +30,10 @@ public class Application {
 		/*System.out.println(tree.findMin().key);
 		System.out.println(tree.findMax().key);*/
 		
+		tree.listNode(5);
+		tree.deleteNode(5);
+		System.out.println("");
+		
 		tree.listNode(10);
 		
 

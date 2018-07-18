@@ -70,14 +70,14 @@ public class BST {
 			if(key < current.key) {
 				current = current.leftChild;
 				if(current.key == key) {
-					childR=current.rightChild;
-					childL=current.leftChild;
+					childR=current.rightChild; 
+					childL=current.leftChild; 
 					parent.leftChild = null;
 					if(childR != null) {
-						insert(childR.key,childR.value);
+						parent.leftChild = childL;
 					}
 					if(childL != null) {
-						insert(childL.key,childL.value);
+						parent.rightChild = childR;
 					}
 
 					return;
