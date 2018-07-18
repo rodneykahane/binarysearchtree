@@ -37,42 +37,42 @@ public class Application {
 		tree.insert(63,"sixty three");
 		tree.insert(67,"sixty seven");*/
 		
-		/*tree.insert(50,"fifty");
+		tree.insert(50,"fifty");
 		tree.insert(25,"twenty five");
 		tree.insert(15,"fifteen");
 		tree.insert(35,"thirty five");
 		tree.insert(5,"five");
 		tree.insert(20,"twenty");
 		tree.insert(30,"thirty");
-		tree.insert(40,"forty");*/
+		tree.insert(40,"forty");
 		
-		tree.insert(50,"fifty");
+		/*tree.insert(50,"fifty");
 		tree.insert(65,"sixty five");
 		tree.insert(60,"sixty");
 		tree.insert(55,"fifty five");
 		tree.insert(58,"fifty eight");
 		tree.insert(70,"seventy");
 		tree.insert(67,"sixty seven");
-		tree.insert(72,"seventy two");	
+		tree.insert(72,"seventy two");	*/
 		
 		
 		
 		tree.listNode(50);
 		System.out.println("");		
-		tree.listNode(65);
-		System.out.println("");
+		//tree.listNode(65);
+		//System.out.println("");
 		
 		System.out.println("deleting node");
-		tree.deleteNode(65);		
+		tree.deleteNode(25);		
 		
 		System.out.println("");
 		tree.listNode(50);
 		System.out.println("");
-		tree.listNode(70);
-		System.out.println("");
+		tree.listNode(30);
+		/*System.out.println("");
 		tree.listNode(67);
 		System.out.println("");
-		tree.listNode(60);
+		tree.listNode(60);*/
 
 	}//end main
 

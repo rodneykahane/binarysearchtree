@@ -89,9 +89,9 @@ public class BST {
 						parent.leftChild = current.rightChild;
 					}*/
 					//version 3
-					System.out.println("we on left?");
-					childR=current.rightChild;//35
-					childL=current.leftChild;//15
+					
+					childR=current.rightChild;
+					childL=current.leftChild;
 					if(childL.key > childR.key) {
 						parent.leftChild=childL;
 						childR.leftChild.leftChild = childR;
@@ -125,9 +125,9 @@ public class BST {
 						parent.rightChild = current.leftChild;
 					}*/
 					//version 3
-					System.out.println("we on right?");
-					childR=current.rightChild;//70
-					childL=current.leftChild;//60
+					
+					childR=current.rightChild;
+					childL=current.leftChild;
 					if(childR.key > childL.key) {
 						parent.rightChild=childR;
 						childR.leftChild.leftChild = childL;
