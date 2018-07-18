@@ -62,37 +62,48 @@ public class BST {
 	public void deleteNode(int key) {
 		Node current = root;
 		Node parent;
-		Node childR;
-		Node childL;
+		/*Node childR;
+		Node childL;*/
 
 		while(true) {
 			parent = current;
 			if(key < current.key) {
 				current = current.leftChild;
 				if(current.key == key) {
-					childR=current.rightChild; 
+					/*childR=current.rightChild; 
 					childL=current.leftChild; 
-					parent.leftChild = null;
+					parent.leftChild = current.leftChild;
 					if(childR != null) {
 						parent.leftChild = childL;
 					}
 					if(childL != null) {
 						parent.rightChild = childR;
+					}*/
+					if(current.leftChild != null) {						
+						parent.leftChild = current.leftChild;
+					} else {					
+						parent.leftChild = current.rightChild;
 					}
 
 					return;
 				}
-			} else {
+			} 
+			if(key > current.key){
 				current = current.rightChild;
 				if(current.key == key) {
-					childR=current.rightChild;
+					/*childR=current.rightChild;
 					childL=current.leftChild;
-					parent.rightChild = null;
+					parent.rightChild = current.rightChild;
 					if(childR != null) {
 						insert(childR.key,childR.value);
 					}
 					if(childL != null) {
 						insert(childL.key,childL.value);
+					}*/
+					if(current.rightChild != null) {						
+						parent.rightChild = current.rightChild;
+					} else {					
+						parent.rightChild = current.leftChild;
 					}
 					return;
 				}
