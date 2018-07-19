@@ -59,13 +59,13 @@ public class BST {
 	}//end findMax()
 
 	//when deleting node, find the smallest node in the set of nodes that are large than the one being deleted
-	
+
 	public boolean remove(int key) {
 		Node currentNode = root;
 		Node parentNode = root;
-		
+
 		boolean isLeftChild = false;
-		
+
 		//searching to find the node with the key to delete
 		while(currentNode.key != key) {
 			parentNode = currentNode;
@@ -80,11 +80,11 @@ public class BST {
 				return false;
 			}
 		}
-			
+
 		//found the node
 		Node nodeToDelete = currentNode;
-		
-		
+
+
 		//if node is a leaf
 		if(nodeToDelete.leftChild == null && nodeToDelete.rightChild==null) {
 			if(nodeToDelete==root) {
@@ -95,15 +95,47 @@ public class BST {
 				parentNode.rightChild = null;
 			}
 		}
-		
-		//if node has a child
-		
+
+		//if node has one child child that is on the left
+		else if(nodeToDelete.rightChild == null) {
+			if(nodeToDelete == root) {
+				root = nodeToDelete.leftChild;
+			} else if (isLeftChild) {
+				parentNode.leftChild = nodeToDelete.leftChild;
+			} else {
+				parentNode.rightChild = nodeToDelete.leftChild;
+			}			
+		}
+
+		//if node has one child child that is on the right
+		else if(nodeToDelete.leftChild == null) {
+			if(nodeToDelete == root) {
+				root = nodeToDelete.rightChild;
+			} else if (isLeftChild) {
+				parentNode.leftChild = nodeToDelete.rightChild;
+			} else {
+				parentNode.rightChild = nodeToDelete.rightChild;
+				
+			}			
+		}
+
 		//if node has 2 children
-		
-		
-		
+		else {
+			Node successor = getSuccessor(nodeToDelete);
+			//connect parent of lead to successor
+			
+			if(nodeToDelete == root) {
+				root = successor;
+			} else if(isLeftChild)
+		}
+
+
 		return true;
 	}//end remove()
 
+	private Node getSuccessor(Node nodeToDelete) {
+		
+		return nodeToDelete;
+	}
 
 }//end class
