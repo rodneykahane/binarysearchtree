@@ -98,9 +98,10 @@ public class BST {
 						parent.leftChild = childR;
 						childR.leftChild.leftChild = childL;
 					}*/
-					//version 4
+					//version 4 -- attempt based on professor's direction
+					parent.leftChild = current.rightChild.leftChild;
 					
-
+					
 					return;
 				}
 			} 
@@ -135,7 +136,8 @@ public class BST {
 						parent.rightChild = childL;
 						childR.rightChild.rightChild = childL;
 					}*/
-					//version 4
+					//version 4 -- attempt based on professor's direction
+					parent.rightChild = current.rightChild.leftChild;
 					
 					return;
 				}
