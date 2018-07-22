@@ -115,7 +115,7 @@ public class BST {
 				parentNode.leftChild = nodeToDelete.rightChild;
 			} else {
 				parentNode.rightChild = nodeToDelete.rightChild;
-				
+
 			}			
 		}
 
@@ -123,10 +123,16 @@ public class BST {
 		else {
 			Node successor = getSuccessor(nodeToDelete);
 			//connect parent of lead to successor
-			
+
 			if(nodeToDelete == root) {
 				root = successor;
-			} else if(isLeftChild)
+			} else if(isLeftChild) {
+				parentNode.leftChild = successor;
+			} else {
+				parentNode.rightChild = successor;
+			}
+
+			successor.leftChild = nodeToDelete.leftChild;
 		}
 
 
@@ -134,8 +140,93 @@ public class BST {
 	}//end remove()
 
 	private Node getSuccessor(Node nodeToDelete) {
-		
-		return nodeToDelete;
+		Node successorParent = nodeToDelete;
+		Node successor = nodeToDelete;
+
+		Node current = nodeToDelete.rightChild; // go to the right child
+
+		while(current != null) {  //start going left down the tree until the node has no left children
+			successorParent = successor;
+			successor = current;
+			current = current.leftChild;
+		}
+
+		//if successor not a right child
+		if(successor != nodeToDelete.rightChild) {
+			successorParent.leftChild = successor.rightChild;
+			successor.rightChild = nodeToDelete.rightChild;			
+		}
+
+		return successor;
+	}//end getSuccessor()
+
+	public static void displayTree(BST tree) {
+		Node currentNode = tree.root;
+		Node parentNode = tree.root;
+		Node currentL;
+		Node currentR;
+		Node parentL;
+		Node parentR;
+		int side=0;
+
+
+		System.out.println("......................................................");
+		System.out.println(currentNode.key);
+		System.out.print(currentNode.leftChild.key);
+		System.out.print("    ");
+		System.out.print(currentNode.rightChild.key);
+		System.out.println("");
+		currentL=parentNode.leftChild;
+		currentR= parentNode.rightChild;
+
+		while(currentL != null && currentR != null) {
+			if(currentL.leftChild!=null)
+				System.out.print(currentL.leftChild.key);
+			System.out.print("      ");
+			if(currentL.rightChild!=null)
+				System.out.print(currentL.rightChild.key);
+			System.out.print("      ");
+			if(currentR.leftChild!=null)
+				System.out.print(currentR.leftChild.key);
+			System.out.print("      ");
+			if(currentR.rightChild!=null)
+				System.out.print(currentR.rightChild.key);
+			System.out.println("");
+
+
+			parentL=currentL;
+			parentR=currentR;
+			if(side == 0) {
+				currentL=parentL.leftChild;
+				currentR=parentL.rightChild;
+				System.out.println("*** parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
+				side++;
+			}else {
+				currentL=parentR.leftChild;
+				currentR=parentR.rightChild;
+				System.out.println("*** parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
+				side--;
+			}
+
+		}
+
+
+		System.out.println("......................................................");
+
+
+
+	}//end displayTree()
+
+	private static void dispNode (Node disp, int tab) {
+		for(int i=0;i<tab-1;i++) {
+			System.out.print("    ");
+		}
+		if(disp != null) {
+			System.out.print(disp.key);
+		} else {
+			System.out.print("--");
+		}
 	}
+
 
 }//end class
