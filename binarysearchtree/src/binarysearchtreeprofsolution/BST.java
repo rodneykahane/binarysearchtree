@@ -168,6 +168,8 @@ public class BST {
 		Node parentL;
 		Node parentR;
 		int side=0;
+		int newLine=0;
+
 
 
 		System.out.println("......................................................");
@@ -178,40 +180,78 @@ public class BST {
 		System.out.println("");
 		currentL=parentNode.leftChild;
 		currentR= parentNode.rightChild;
+		parentL=currentL;
+		parentR=currentR;
 
-		while(currentL != null && currentR != null) {
-			if(currentL.leftChild!=null)
-				System.out.print(currentL.leftChild.key);
+		while(currentL != null || currentR != null) {
+			if(currentL!=null && currentL.leftChild!=null)
+				System.out.print(" "+currentL.leftChild.key);
 			System.out.print("      ");
-			if(currentL.rightChild!=null)
-				System.out.print(currentL.rightChild.key);
+			if(currentL!=null && currentL.rightChild!=null)
+				System.out.print(" "+currentL.rightChild.key);
 			System.out.print("      ");
-			if(currentR.leftChild!=null)
-				System.out.print(currentR.leftChild.key);
+			if(currentR!=null && currentR.leftChild!=null)
+				System.out.print(" "+currentR.leftChild.key);
 			System.out.print("      ");
-			if(currentR.rightChild!=null)
-				System.out.print(currentR.rightChild.key);
-			System.out.println("");
+			if(currentR!=null&&currentR.rightChild!=null)
+				System.out.print(" "+currentR.rightChild.key);
 
 
-			parentL=currentL;
-			parentR=currentR;
-			if(side == 0) {
+
+
+			if(newLine == 2) {				
+
+				parentL=parentL.rightChild;
+				parentR=parentR.rightChild;
+				newLine=0;
+
 				currentL=parentL.leftChild;
 				currentR=parentL.rightChild;
-				System.out.println("*** parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
+				if(currentL!=null) {
+					int debugKey_pLlC= currentL.key;
+				}
+				if(currentR!=null) {
+					int debugKey_pLrC = currentR.key;
+				}
+				//System.out.println("*** side is "+side+" parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
 				side++;
-			}else {
+				newLine++;
+				System.out.println("");
+
+			} else if(side == 0) {				
+				System.out.println("");
+				currentL=parentL.leftChild;
+				currentR=parentL.rightChild;
+				int debugKey_pLlC= currentL.key;
+				int debugKey_pLrC = currentR.key;
+				//System.out.println("*** side is "+side+" parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
+				side++;
+				newLine++;
+			}else if(side == 1){				
+
+				int plkey=parentL.key;
+				int prkey = parentR.key;
+
+
 				currentL=parentR.leftChild;
 				currentR=parentR.rightChild;
-				System.out.println("*** parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
+				if(currentL==null&&currentR.rightChild==null) {
+					System.out.println("......................................................");
+					break;
+				}
+				int debugKey_pRlC= currentL.key;
+				int debugKey_pRrC = currentR.key;
+				//System.out.println("*** side is "+side +" parentL is "+parentL.key+" parentR is "+parentR.key+" currentL is "+currentL.key+" currentR is "+currentR.key);
 				side--;
+				newLine++;
+
 			}
 
-		}
+
+		}//end while
 
 
-		System.out.println("......................................................");
+
 
 
 
